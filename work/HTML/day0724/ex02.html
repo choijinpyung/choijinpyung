@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h4>html(): 자바스크립트의 innerHTML()에 해당</h4>
+    <h4>text(): 자바스크립트의 innerText()에 해당</h4>
+    <h4>append(): 추가</h4>
+    <hr>
+    <h2>1</h2>
+    <h2>2</h2>
+    <h2>3</h2>
+
+    <script>
+        //h2중에서 1번째에 html 태그 넣기
+        //$("h2").eq(0).html("<b>H2태그입니다</b>");
+        //$("h2:eq(0)").html("<b>H2태그입니다</b>");
+        //$("h2:first").html("<b>H2태그입니다</b>");
+        $("h2").first().html("<b>H2태그입니다</b>");
+
+        //h2중에서 2번째에 html 태그 넣기
+        $("h2:eq(1)").text("<b>2번째 H2태그입니다</b>");
+
+        //h2 마지막 태그에 html로 넣고 css(글꼴색)
+        $("h2:last").html("<b>마지막 H2태그 입니다</b>").css("color","skyblue");
+
+        //append는 기존값 뒤에 추가하기
+        $("h2:eq(0)").append("<img src='../image/다운로드/짱구.png'>");
+
+        $("h2:eq(0) img").css({
+            "width" : "150px",
+            "height" : "150px",
+            "margin-left" : "20px",
+            "border-radius" : "25px",
+            "border" : "solid 5px green"
+        })
+
+        //3번째 h2태그 뒤에 이미지 넣고 너비,높이 150
+        $("h2:eq(2)").append("<img src='../image/다운로드/맹구.png'>");
+
+        $("h2:eq(2) img").css({
+            "width" : "150px",
+            "height" : "150px",
+            "margin-left" : "20px",
+            "border-radius" : "25px",
+            "border" : "solid 5px skyblue"
+        })
+
+        //이벤트
+        //첫번째 h2를 클릭시 자기가 가지고 있는 text를 alert 반환
+
+        $("h2:eq(0)").click(function(){
+            
+            alert($(this).text());
+        })
+
+        $("h2:last").click(function(){
+            alert($(this).html());
+        })
+    </script>
+</body>
+</html>

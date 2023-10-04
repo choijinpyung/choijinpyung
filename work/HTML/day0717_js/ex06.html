@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.write("안녕하세요 진평님 자바스크립트 재밌죠?<br>");
+        document.write("안녕하세요 선범님 자바스크립트 재밌죠?<br>");
+        document.write("안녕하세요 순영님 자바스크립트 재밌죠?<br>");
+        document.write("안녕하세요 현규님 자바스크립트 재밌죠?<br>");
+        document.write("안녕하세요 형준님 자바스크립트 재밌죠?<br>");
+        //중복되는걸 함수로 포장한 후..중복되지 않는 부분을 파라메타로 만든 후
+        //함수를 호출할때 값을 넘긴다
+        function showName(name)
+        {
+            document.write("안녕하세요 "+name+"님 자바스크립트 재밌죠?<br>");
+        }
+        showName("진평");
+        showName("선범");
+        showName("순영");
+        showName("현규");
+        showName("형준");
+
+        //Q. 안녕하세요? A님의 나이는 B살입니다 로 출력해보세요
+        function showInfo(name,age)
+        {
+            document.write("안녕하세요?<br>"+name+"님의 나이는 "+age+"세 입니다<br>");
+        }
+        showInfo("진평","27");
+
+        //Q. 본인의 이름,나이,키,몸무게를 파라메타로 받아서 출력하는 함수를 만드세요
+        function myInfo(name,age,height,weight)
+        {
+            document.write("이름 : "+name+"<br>나이 : "+age+"<br>키 : "+height+"<br>몸무게 : "+weight);
+        }
+        myInfo("최진평","27","178","80");
+    </script>
+</body>
+</html>

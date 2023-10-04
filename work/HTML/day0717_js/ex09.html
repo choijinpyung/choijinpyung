@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //전역변수 : 전역에서 사용하는 변수
+        var a=10;
+        var b=100;
+
+        function outer(){
+            //지역변수 : 지역내에서만 사용하는 변수
+            var a=20;
+
+            document.write("3. a="+a+"<br>"); //20
+            document.write("4. b="+b+"<br>"); //100
+        }
+
+        document.write("1. a="+a+"<br>");
+        document.write("2. b="+b+"<br>");
+
+        outer();
+        </script>
+</body>
+</html>

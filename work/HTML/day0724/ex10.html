@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        .bg_0{background-color: skyblue; color: black;}
+        .bg_1{background-color: blueviolet; color: white;}
+        .bg_2{background-color: red; color: white;}
+        .bg_3{background-color: green; color: white;}
+        .bg_4{background-color: greenyellow; color: black;}
+        .bg_5{background-color: cadetblue; color: black;}
+    </style>
+</head>
+<body>
+    <!--태그 반복할때 사용하는 each-->
+    <b></b><b></b><b></b><b></b><b></b>
+    <script>
+        //b태그 갯수만큼 자동반복
+        //i는 index: 0부터
+        //element는 인덱스에 해당하는 b태그(생략가능)
+        $("b").each(function(i,elt){
+            //$(elt).text(i);
+            $(this).text(i);
+        })
+    </script>
+<hr>
+<ul>
+    <li>사과</li>
+    <li>바나나</li>
+    <li>키위</li>
+    <li>오렌지</li>
+    <li>딸기</li>
+    <li>망고</li>
+</ul>
+<script>
+    $("ul li").each(function(idx){
+        $(this).addClass("bg_"+idx);
+    })
+
+    //append & after
+    $("ul li").mouseover(function(){
+        $(this).append("<b>*</b>");
+    })
+
+    $("ul li").mouseout(function(){
+
+        //현재 이벤트가 발생하는데 li 태그의 다음 태그를 제거
+        //$(this).next().remove();
+        
+        //find : 하위 태그중에서 find로 b태그로 찾는다
+        $(this).find("b").remove();
+    })
+</script>
+</body>
+</html>

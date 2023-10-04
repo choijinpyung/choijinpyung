@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style2.css">
+    <script src="../js/randomColor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <h2></h2>
+
+    <script>
+        //공 6개에 1~6까지의 숫자 넣기
+        $("div").each(function(i,ele){
+            $(ele).html(i+1).css("background-color",randomColor());
+        })
+
+        //마우스 올리면 해당 생삭으로 rgb색상을 h2태그에 출력
+        //마우스 벗어나면 지우기(empty())
+        //css("속성","값")
+        //css("속성")
+        //attr("속성","값")
+        //attr("속성")
+        $("div").hover(function(){
+            var col=$(this).css("background-color")
+            $("h2").html(col).css("color",col);
+        },function(){
+            $("h2").empty();
+        })
+    </script>
+</body>
+</html>

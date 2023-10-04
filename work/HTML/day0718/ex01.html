@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ok(){
+            alert('잘하셨어요');
+        }
+
+        window.onload=function(){
+            var no=document.getElementById("btno");
+            no.onclick=function(){
+                alert('아쉽네요');
+            }
+        }
+
+        function okconfirm(){
+            if(confirm('아침밥드셨나요?'))
+            {
+                alert('네');
+            }
+
+            else
+            {
+                alert('아니오');
+            }
+        }    
+    </script>
+</head>
+<body>
+    <h1>아침밥드셨나요?</h1>
+    <form action="#">
+        <fieldset>
+            <legend>아침식사여부</legend>
+            <input type="button" value="예" onclick="ok()">
+            <input type="button" value="아니오" id="btno" onclick="no()">
+        </fieldset>
+    </form>
+
+    <div>
+        <input type="button" value="여기를 눌러보세요" onclick="okconfirm()">
+            <!--
+            confirm창에서 아침드셨나요? 확인누르면 네
+            취소누르면 아니오 경고창 나오도록 해보세요
+            -->
+    </div>
+</body>
+</html>

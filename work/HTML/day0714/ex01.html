@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div{
+        width: 400px;
+        height: 250px;
+        border: 1px solid gray;
+        margin-bottom: 20px;
+        margin-left: 50px;
+        background-size:  50px 70px;
+    }
+
+    div.a{
+        background-image: url("../image/만화이미지/20.png");
+    }
+
+    div.b{
+        background-image: url("../image/만화이미지/01.png");
+        background-repeat: repeat-x;
+    }
+
+    div.c{
+        background-image: url("../image/만화이미지/02.png");
+        background-repeat: repeat-y;
+    }
+
+    div.d{
+        background-image: url("../image/만화이미지/03.png");
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        background-position: right bottom;
+    }
+    /* 범용클래스 즉 모든 태그에서 사용 가능 */
+    .bg{
+        background-color: gainsboro;
+    }
+    body{
+        background-image: url(../image/다운로드/star.png);
+        background-repeat: no-repeat;
+        background-position: 700px 200px /* x축 y축 */;
+    }
+    </style>
+</head>
+<body>
+    <div class="a bg"></div> <!-- 클래스 2개이상 공백으로 구분 -->
+    <div class="b "></div>
+    <div class="c"></div>
+    <div class="d"></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

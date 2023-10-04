@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container div img{
+            border: 5px inset black;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+        var btn1=document.getElementById("btn1");
+        var btn2=document.getElementById("btn2");
+        var btn3=document.getElementById("btn3");
+
+        btn1.onclick=function(){
+            img1.setAttribute("src","../image/연예인사진/13.jpg");
+        }
+
+        btn2.onclick=function(){
+            img1.setAttribute("src","../image/연예인사진/20.jpg");
+        }
+
+        btn3.onclick=function(){
+            img1.setAttribute("src","../image/연예인사진/17.jpg");
+        }
+
+        btn4.onclick=function(){
+            var w=parseInt(img1.getAttribute("width"));
+            w+=10;
+            img1.setAttribute("width",w);
+        }
+
+        btn5.onclick=function(){   
+
+            var w=img1.getAttribute("width");
+            w-=10;
+            img1.setAttribute("width",w);     
+        }
+
+        //아래부분문제
+        var selimage=document.getElementById("selimage");
+        var photo=document.getElementById("photo");
+
+            //alert(selimage.value);
+            var init_img=selimage.value;
+
+            //현재 사진의 속성 (이코드 넣은 이유는 select 이름과 사진을 동일하게 하기위해서)
+            photo.setAttribute("src",init_img);
+
+            //select 이벤트 _change
+            selimage.onchange=function(){
+            
+            //모든 이벤트 함수에는 이벤트 발생 객체에 대한 this라는
+            //변수가 기본적으로 존재한다
+            console.log(this.value);
+
+            //사진의 src에 this.value를 적용
+            photo.setAttribute("src",this.value);
+        }
+
+        btn6.onclick=function(){
+            var x=photo.getAttribute("width");
+            x-=10;
+            photo.setAttribute("width",x);  
+        }
+
+        btn7.onclick=function(){   
+            var y=parseInt(photo.getAttribute("width"));
+            y+=10;
+            photo.setAttribute("width",y);   
+        }
+    }
+    </script>
+</head>
+<body>
+    <h3>이미지변경 및 크기</h3>
+    <button type="button" id="btn1" onclick="bt1">박신혜</button>
+    <button type="button" id="btn2" onclick="bnt2">유아인</button>
+    <button type="button" id="btn3" onclick="btn3">신민아</button>
+    <button type="button" id="btn4">점점크게</button>
+    <button type="button" id="btn5">점점작게</button>
+
+    <hr>
+    <img src="../image/다운로드/맹구.png" width="300" id="img1" border="1">
+
+    <hr>
+    <div class="container">
+        <div class="buttons">
+            <button type="button" id="btn6">점점작게</button>
+            <button type="button" id="btn7">점점크게</button>
+            <b style="margin-left: 20px;">사진선택</b>
+            <select id="selimage">
+                <option value="../image/다운로드/훈이.png" selected>훈이</option>
+                <option value="../image/다운로드/짱구.png">짱구</option>
+            </select>
+        </div>
+
+        <div>
+            <img src="../image/다운로드/훈이.png" id="photo" width="300">
+        </div>
+    </div>
+</body>
+</html>

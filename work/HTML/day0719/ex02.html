@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <title>Document</title>
+    <style>
+        #out{
+            position: absolute;
+            left: 10px;
+            top: 300px;
+            width: 456px;
+            height: 115px;
+            border: 1px solid gray;
+            background-color: pink;
+            padding: 20px;
+        }
+
+        table{
+            border: 2px slid gray;
+            width: 500px;
+            background-color: pink;
+            font-family: VT323;
+        }
+        
+        tr,th,td{
+            border: 1px dotted gray;
+            font-size: 10pt;
+        }
+    </style>
+
+    <script>
+        function writeInfo(){
+            
+            var gradeStr="최종학력은 ";
+            var flag=false;
+
+            for(var i=0; i<frm.grade.length; i++)
+            {
+                //선택이 되면 value값을 얻어서 gradeStr에 추가
+                if(frm.grade[i].checked)
+                {
+                    flag=true;
+                    gradeStr+=frm.grade[i].value+" ";
+                }
+            }
+
+            //최종학력 하나도 선택 안하면 초기값 그대로 fasle된다
+            if(!flag)
+            {
+                gradeStr="항목을 선택하세요<br>";
+            }else{
+                gradeStr+="<br>";
+            }
+
+            //최종학력
+            out.innerHTML=gradeStr;
+            
+
+            var langStr="사용가능 언어는 ";
+            for(var i=0; i<frm.lang.length; i++)
+            {
+                if(frm.lang[i].checked)
+                langStr+=frm.lang[i].value+"<br>"
+            }
+
+            //언어
+            out.innerHTML+=langStr;
+            //친한친구
+            out.innerHTML+="가장 친한친구는 "+frm.fr.value+"<br>";
+            //키
+            out.innerHTML+="키는 "+frm.height.value+"<br>";
+            //몸무게
+            out.innerHTML+="몸무게는 "+frm.weight.value+"<br>";
+            //생년월일
+            out.innerHTML+="생년월일은 "+frm.day.value;
+        }
+
+        function goWeight(num){
+            document.getElementById("out1").innerHTML=num;
+        }
+
+        function goDate(){ 
+            out2.innerHTML="날짜 "+frm.day.value;
+        }
+
+        function goColor(col){
+            colout.style.color=frm.col.value;
+        }
+
+        function goHeight(num){
+            document.getElementById("out3").innerHTML=num;
+        }
+    </script>
+</head>
+<body>
+    <form action="#" name="frm">
+    <table>
+        <caption><b>Radio&Check</b></caption>
+        <tr height="30">
+            <td>
+                <b>최종학력 선택하시오</b>
+                <!--radio는 name이 동일해야한다-->
+                <input type="radio" name="grade" value="고등학교">고등학교&nbsp;
+                <input type="radio" name="grade" value="전문대학">전문대학&nbsp;
+                <input type="radio" name="grade" value="대학교">대학교&nbsp;
+                <input type="radio" name="grade" value="대학원">대학원&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>본인이 가능한 프로그램 언어</b>
+                <!--checkbox는 중복선택가능 name 동일해야한다-->
+                <input type="checkbox" name="lang" value="C언어">C언어&nbsp;
+                <input type="checkbox" name="lang" value="JAVA">JAVA&nbsp;
+                <input type="checkbox" name="lang" value="ORACLE">ORACLE&nbsp;
+                <input type="checkbox" name="lang" value="SPRING">SPRING&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <b>이미지선택</b>
+            <input type="file">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>우리반에서 가장친한친구</b>
+                <select name="fr">
+                    <option value="성현">성현</option>
+                    <option value="연주">연주</option>
+                    <option value="현규">현규</option>
+                    <option value="선범">선범</option>
+                    <option value="순영">순영</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b id="colout">가장좋아하는 색은</b>
+                <input type ="color" name="col" onchange="goColor()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 키는 몇cm</b>
+                <input type="number" name="height" min="150" max="200"
+                value="150" step="2" onchange="goHeight(this.value)">키 
+
+                <span id="out3">0</span>cm
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 몸무게는 몇kg</b>
+                <input type="number" name="weight" min="40" max="100"
+                value="50" step="2" onchange="goWeight(this.value)">몸무게 
+
+                <span id="out1">0</span>kg
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 생년월일</b>
+                <input type="date" name="day" onchange="goDate()">
+                <span id="out2"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" aline="center">
+                <input type="button" value="서버에 전송" onclick="writeInfo()">
+            </td>
+        </tr>
+    </table>
+    </form>
+    <div id="out"></div>
+</body>
+</html>

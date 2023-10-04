@@ -1,0 +1,44 @@
+div.a{
+    font-size: 2em;
+    font-family: 'VT323';
+}
+
+div.b>figure{
+    float: left;
+}
+
+div.b>figure>img{
+    border:3px solid forestgreen;
+    border-radius: 30px 60px 100px 20px; /* 왼쪽 상단 모서리부터 시계방향 */
+}
+
+div.b>figure>figcaption>b{
+    font-size: 25px;
+    margin-left: 20px;
+    font-family: 'VT323';
+}
+
+h3.c{
+    /* float:left 속성을 해제하고 싶다 */
+    clear: both;
+}
+
+div.d{
+    display: flex;
+    /* row:가로방향(왼쪽정렬) row-reverse:거꾸로출력(우측정렬)
+    column:세로방향으로 정렬*/
+    flex-direction: row-reverse;
+}
+
+div.d img{
+    border: 2px solid green;
+    box-shadow: 15px 15px 15px gray;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+div.d b{
+    margin-left: 20px;
+    font-family: 'VT323';
+}

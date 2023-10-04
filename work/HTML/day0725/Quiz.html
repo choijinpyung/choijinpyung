@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        #result{
+            width: 400px;
+            height: 143px;
+            font-family: VT323;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        $(function(){
+        $("#btn1").click(function(){
+            //연령대
+            var s="나의 연령대는 : "+$("input[name='age']:checked").val()+"<br>";
+
+            //여행
+            var len=$("input[name='country']:checked").length;
+            s+="체크갯수 "+len;
+            
+            if(len==0)
+            {
+                s+="<br>가본나라없음";
+            }
+            
+            else
+            {
+                s+="<br>여행해본 나라는 : ";
+                $("input[name='country']:checked").each(function(i,element){
+                    s+=$(this).val()+"&nbsp;";
+                })
+            }
+
+            //접종여부
+            s+="<br>접종여부 : "+($("#covid").is(":checked")?"접종":"미접종");
+            var selfont=$("#selfont").val();
+            $("#result").html(s).css("font-family",selfont);
+        })
+    })
+    </script>
+</head>
+<body style="background-color: ghostwhite;">
+    <h3>[0725 과제]</h3>
+    <hr>
+    <div>
+        <h5>당신의 연령대는?</h5>
+        <input type="radio" name="age" value="20대">20대
+        <input type="radio" name="age" value="30대">30대
+        <input type="radio" name="age" value="40대">40대
+        <input type="radio" name="age" value="50대">50대
+        <br>
+    </div>
+
+    <hr>
+
+    <div>
+        <h5>여행해본 나라는</h5>
+        <input type="checkbox" name="country" value="한국">한국
+        <input type="checkbox" name="country" value="중국">중국
+        <input type="checkbox" name="country" value="일본">일본
+        <input type="checkbox" name="country" value="대만">대만
+        <input type="checkbox" name="country" value="홍콩">홍콩
+        <br>
+    </div>
+    
+    <hr>
+
+    <div>
+        <h5>코로나 백신 접종여부</h5>
+        <tr>
+            <td>
+                <input type="checkbox" id="covid">접종여부
+            </td>
+        </tr>
+        <span></span>
+    </div>
+    <hr>
+        <h5>글씨체 선택</h5>
+    <select id="selfont">
+        <option value="VT323">VT323</option>
+        <option value="cursive">cursive</option>
+        <option value="fantasy">fantasy</option>
+    </select>
+    <hr>
+    <div>
+        <button type="button" id="btn1">결과전송</button>
+        <br>
+    </div>
+
+    <div id="result"></div>
+</body>
+</html>

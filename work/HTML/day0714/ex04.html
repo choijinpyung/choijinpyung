@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tb1{
+            width: 400px;
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+        
+        .tb1 td,.tb1 th{
+            border: 1px solid black;
+        }
+
+        .tb1 tr th{
+            background-color: aqua;
+        }
+
+        .tb1 tr td:hover{
+            background-color: mediumaquamarine;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" style="width: 300px">
+        <caption<b>[표 1]</b></caption>
+        <tr height="50" bgcolor="orange">
+            <td align="center">하나</td>
+            <td align="center">둘</td>
+            <td align="right" valign="top">셋</td>
+            <td valign="bottom" bgcolor="green">넷</td>
+        </tr>
+
+        <tr  height="50">
+            <td colspan="3" align="center">3칸 합침!!!</td>
+        </tr>
+
+        <hr>
+
+    <table class="tb1">
+        <caption><b>[표 2]</b></caption>
+        <tr>
+            <th>사진</th>
+            <th>이름</th>
+            <th>핸드폰</th>
+            <th>주소</th>
+        </tr>
+
+        <tr>
+            <td rowspan="4">
+            <img src="../image/만화이미지/01.png">
+            <td>최진평</td>
+            <td>010-222</td>
+            <td>부천시</td> 
+        </tr>
+
+        <tr>
+            <td>김선범</td>
+            <td>011-234</td>
+            <td>평양시</td> 
+        </tr>
+
+        <tr>
+            <td>김국진</td>
+            <td>111-444</td>
+            <td>양주시</td> 
+        </tr>
+    </table>
+</body>
+</html>

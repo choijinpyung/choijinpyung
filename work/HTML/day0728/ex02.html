@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        div.wall{
+            position: absolute;
+            width: 200px;
+            height: 500px;
+            background-image: url("../image/jquery_img/bg2.png");
+            z-index: 2;
+        }
+
+        #img1{
+            position: absolute;
+            left: 70px;
+            top: 350px;
+            width: 250px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h3>카메라 강제 이벤트 발생</h3>
+    <hr>
+    <input type="file" id="file" style="visibility : hidden;">
+    <img src="../image/jquery_img/카메라.png" width="70px" id="cam">
+
+    <script>
+        $("#cam").click(function(){
+            $("#file").trigger("click");
+        })
+    </script>
+
+    <hr>
+    <h3>이미지 트리거 발생</h3>
+    <div class="wall"></div>
+    <img src="../image/jquery_img/03.png" id="img1">
+
+    <script>
+        $("#img1").click(function(){
+            $(this).animate({width:'0px'},'slow',function(){
+                $(this).animate({width:'250px'},'slow');
+            })
+        })
+
+        //3초에 한번씩 이미지를 클릭한 효과
+        setinterval(function(){
+            $("#img1").trigger("click");
+        },3000)
+    </script>
+</body>
+</html>

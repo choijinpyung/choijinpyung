@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <style>
+        #out{
+            position: absolute;
+            left: 20px;
+            top: 100px;
+            background-color: beige;
+            padding: 10px;
+            width: 300px;
+            height: 150px
+            border 1px solid gray;
+        }
+    </style>
+    <script>
+        function test1(a){
+            alert(a+1000);
+        }
+
+        function test2(str){
+            alert("문자열["+str+"]을\n받았어요!!!");
+        }
+
+        //test3 ... 데이터를 추가할까요? 확인 추가했어요 취소시 취소했어요... out에 출력
+
+        function test3(){
+            
+            var a=confirm("데이터를 추가할까요");
+
+            if(a)
+            document.getElementById("out").innerHTML="추가했어요";
+            else
+            document.getElementById("out").innerHTML="취소했어요";
+        }
+        
+        //당신이 사는 지역은? 서울... 내가 사는 지역은 서울 입니다... out에 출력
+        
+        window.onload=function(){
+
+            document.getElementById("btn4").onclick=function(){
+
+            var city=prompt("당신이 사는 지역은?");
+
+            out.innerHTML="내가 사는 지역은 "+city+"입니다";
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="alert" class="btn btn-greenyellow" onclick="test1(1234)">
+    <input type="button" value="alert" class="btn btn-pink" onclick="test2('hello')">
+    <input type="button" value="confirm" class="btn btn-blue" onclick="test3()">
+    <input type="button" value="prompt" class="btn btn-red" id="btn4">
+    <div id="out"></div>
+</body>
+</html>

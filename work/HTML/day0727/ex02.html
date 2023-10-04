@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        css{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="btn btn-outline-success">애니메이션_#1</button>
+    <button type="button" class="btn btn-outline-success">애니메이션_#2</button>
+    <div id="box1"></div>
+
+    <script>
+        $("#box1").css({
+            "width": "248px",
+            "height": "120px",
+            "border": "3px solid black",
+            "margin-top": "20px"
+        })
+
+        $("button:eq(0)").click(function(){
+            //애니메이션_box1에 너비가 100씩 커지고 선굵기 20px 투명도 3초동안
+            $("#box1").animate({"width":"+=100px","borderwidth":"20px","opacity":"0.2","marginLeft":"300px"},1000)
+        })
+
+        $("button:eq(1)").click(function(){
+            //되돌리기
+            $("#box1").animate({"width":"-=100px","borderwidth":"1px","opacity":"1","marginLeft":"0px"},1000)
+        })
+    </script>
+
+    <hr>
+
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+    <div class="box2"></div>
+
+    <script>
+        $(".box2").css({
+        position: 'relative',
+        width: '60px',
+        height: '60px',
+        backgroundColor: 'tomato',
+        marginTop: '10px'
+    })
+
+    $(".box2").each(function (i, element) {
+        
+        $(this).delay(i * 500).animate({ left: "+=300px" }, 'slow');
+    })
+    </script>
+    <hr>
+    <img src="../image/jquery_img/01.png" id="img1">
+    <!--이미지 사라졌다 잠시 멈춘다, 그리고 다시 나타남-->
+
+    <script>
+        $(".box2").slideUp(2000),delay(2000).slideDown(2000);
+    </script>
+</body>
+</html>

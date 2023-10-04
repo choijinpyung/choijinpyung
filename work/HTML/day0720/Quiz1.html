@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <style>
+        #result{
+            position: absolute;
+            left: 10px;
+            top: 150px;
+            width: 500px;
+            height: 500px;
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        var imgArr=new Array();
+        imgArr.push("../image/연예인사진/1.jpg");
+        imgArr.push("../image/연예인사진/2.jpg");
+        imgArr.push("../image/연예인사진/3.jpg");
+        imgArr.push("../image/연예인사진/4.jpg");
+        imgArr.push("../image/연예인사진/5.jpg");
+
+        var r=document.getElementById("result");
+
+        function writePromeptimage(){
+
+            var idx=prompt("출력할 이미지의 인덱스 번호를 입력해주세요");
+
+            if(idx<0 || idx>4)
+                result.innerHTML="해당 번호는 없습니다";
+            else
+                result.innerHTML="<img src='"+imgArr[idx]+"'>";
+        }
+    </script>
+</head>
+<body>
+    <!-- 문제2. 이미지 출력이라는 버튼을 만들고 클릭시
+        prompt로 출력할 이미지의 인덱스 번호를 입력해주세요라고 출력 후
+        0번을 입력하면 0번 이미지 출력(총 5개의 이미지를 imgArr이라는 배열 형태로
+        넣어놓고 다양한 폴더의 이미지 5개 배열에 넣어주세요)
+        (단 배열 인덱스에 없는 값 입력시 div에 "해당 번호는 없습니다" 라고 출력)
+    -->
+    <button type="button" class="btn1 btn-greenyellow"az
+    onclick="writePromeptimage()">이미지 출력</button>
+
+    <div id="result"></div>
+</body>
+</html>

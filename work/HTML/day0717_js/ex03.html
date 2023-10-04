@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //암시적형변환 : 자바스크립트 컴파일러에 의해 자동형변환 일어남
+        //테스트
+        var result=1+"2";
+        document.write("result="+result+"<br>"); //12
+
+        var result2="5"+true;
+        document.write("result="+result2+"<br>"); //5true
+
+        //명시적형변환
+        //1.String() 이용해서 숫자로
+
+        var relt1=1+"2";
+        document.write("relt1="+relt1+"<br>"); //12
+
+        var test1="300";
+        document.write((test1)+10+"<br>"); //30010
+
+        var test2="300.1";
+        document.write((test2)+10+"<br>"); //300.110
+
+        //Number,parseint
+        var test3=Number(test1);
+        document.write((test3)+10+"<br>"); //310
+
+        var test4=parseInt(test2);
+        document.write(test4+100); //400
+    </script>
+</body>
+</html>

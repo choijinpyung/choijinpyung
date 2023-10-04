@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 50px;
+            margin: 3px;
+            text-align: center;
+            line-height: 50px;
+            background: skyblue;
+            color: white;
+        }
+
+        #pink{
+
+            background: pink;
+            color: black;  
+        }
+    </style>
+</head>
+<body>
+    <div class=box id="pink"></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box></div>
+    <div class=box green></div>
+
+    <script>
+        //getElementByTagName
+        var divAll=document.getElementsByTagName("div");
+        for(var i=0; i<divAll.length; i++)
+        {
+            divAll[i].style.border='5px solid gray';  
+        }
+
+        //classname
+        var boxAll=document.getElementsByClassName('box');
+        for(var i=0; i<boxAll.length; i++)
+        {
+            boxAll[i].innerHTML='item';
+        }
+
+        //id
+        var pinkbox=document.getElementById('pink');
+        pinkbox.innerText='pinkbox';
+
+        //querySelector
+        var qs=document.querySelector('div');
+        qs.style.backgroundColor='greenyellow';
+
+        //querySelectorAll
+        var qsAll=document.querySelectorAll('div');
+        for(var i=0; i<qsAll.length; i++)
+        {
+            qsAll[i].innerText='Hello';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //페이지의 모든 요소가 로드되어야 호출...
+        window.onload=function(){
+        var list='';
+        list+='<ul>';
+        list+='<li>Java</li>';
+        list+='<li>JavaScript</li>';
+        list+="</ul>";    
+
+        //document.write(list);
+        //html문서의 body태그에 list를 넣는다
+        //document.body.innerHTML=list;
+
+        document.getElementById('out').innerHTML=list;
+        
+        //out.innerHTML=list;
+        }
+    </script>
+</head>
+<body>
+    <div id="out">결과</div>
+</body>
+</html>

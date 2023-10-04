@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="twoAction.jsp" method="post">
+		<table class="table table-bordered" style="width: 350px;">
+			<tr>
+				<th>조장 1순위</th>
+				<td>
+					<select size="1" name="person">
+						<option value="성신">성신</option>
+						<option value="민규">민규</option>
+						<option value="진평">진평</option>
+						<option value="성현">성현</option>
+						<option value="영환">영환</option>
+						<option value="성경">성경</option>
+						<option value="시온">시온</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>차기 조장 순위</th>
+				<td>
+					<select name="person2" multiple="multiple" style="width: 100px;">
+						<option value="성신">성신</option>
+						<option value="민규">민규</option>
+						<option value="진평">진평</option>
+						<option value="성현">성현</option>
+						<option value="영환">영환</option>
+						<option value="성경">성경</option>
+						<option value="시온">시온</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="전송" class="btn btn-danger" style="width: 150px;">
+				</td>
+			</tr>
+			
+		</table>
+	</form>
+</body>
+</html>

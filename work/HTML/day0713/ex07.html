@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <title>Document</title>
+    <style>
+        /* class: . id: # */
+        .happy{
+            /* happy라는 class 전체태그에 적용 */
+            color: #ffccff;
+            font-size: 40px;
+            font-family: 'VT323';
+        }
+
+        b.nice {
+            /* b태그 영역에서만 적용되는 클래스 */
+            text-decoration: underline;
+            color: blue;
+            text-shadow: 3px 3px 3px #ccc;
+        }
+        
+        img.imga{
+            width: 150px;
+            border: 10px groove gray;
+            margin-left: 200px;
+            margin-bottom: 50px;
+        }
+
+        img.imgb{
+            /* 가로 세로 200 그림자 테두리둥글리기 */
+            width: 200; 
+            height: 200; 
+            box-shadow: 4px 4px 4px gray; 
+            border-radius: 100px;
+        }
+
+        b.bts{
+            font-size: 40px;
+            font-family:'VT323';
+            color: greenyellow;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+<body>
+    <font size="10" color="red">Font Tag!!!</font>
+    <span style="color: magenta; font-size: 3em;">Span Tag!!!</span><br>
+    <span style="border: 2px solid green;">안녕하세요!!!</span><br>
+    <div class="happy">Div Tag_#1!!!</div>
+    <div class="happy">Div Tag_#2!!!</div>
+    <b class="happy nice">B Tag!!! 굵게 속성 포함된 태그</b><br>
+    <img src="../image/flower_ani/f12.png" alt="이미지 없다" title="만화이미지 1" class="img-circle">
+    <br>
+    <img src="../image/Food/10.jpg" alt="음식사진없음" title="오늘 점심!!!!" class="img-thumbnail">
+    <br>
+    <b class="bts">스팸마요</b>
+    <img src="../image/Food/4.jpg" alt="음식사진없음" title="오늘 점심!!!!" class="img-rounded coners">
+    <img src="../image/Food/5.jpg" alt="음식사진없음" title="오늘 점심!!!!" class="img-circle">
+    <img src="../image/Food/6.jpg" alt="음식사진없음" title="오늘 점심!!!!" class="img-thumbnail">
+    <img src="../image/Food/1.jpg" alt="음식사진없음" title="오늘 점심!!!!" class="img-circle">
+</body>
+</html>

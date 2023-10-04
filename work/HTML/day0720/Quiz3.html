@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/buttonStyle.css">
+    <title>Document</title>
+    <style>
+        #thtest{
+            width: 400px;
+            height: 150px;
+            line-height: 30px;
+            border: 2px solid gray;
+            text-align: center;
+            padding-top: 100px;           
+        }
+
+        .bts{
+            width: 400px;
+            height:200px;
+            line-height: 200px;
+            border: 1px solid white;
+            background-image: url(../image/다운로드/짱구.png);
+            background-size: 150px;
+            text-align: center;
+            font-size: 25pt;
+        }
+    </style>
+</head>
+<body>
+    <!--1.만화 이미지 01.png~10.png까지 출력하세요(for문으로)-->
+    <script>
+        for(var i=1;i<=10;i++)
+        {
+                var img="<img src='../image/만화이미지/"+(i<10?"0":"")+i+".png'>";
+                document.write(img);
+            }
+
+    </script>
+    <hr>
+    <!--
+        2. 음식 사진 1.jpg를 img태그로 나타낸 후 id를 img1으로 주고 
+        그 아이디로 이벤트 추가합니다.
+        사진에 마우스를 올리면 3.jpg로 바뀌고, 클릭하면 5.jpg로 바뀌며
+        마우스를 벗어나면 다시 원래사진으로 돌아가게 이벤트 주기-->
+    <script>
+        function clickmove(){
+            var a=document.getElementById("img1");
+            a.setAttribute("src","../image/Food/5.jpg");
+        }
+
+        function overmouse(){
+            var a=document.getElementById("img1");
+            a.setAttribute("src","../image/Food/3.jpg");
+        }
+    
+        function leavemouse(){
+            var a=document.getElementById("img1");
+            a.setAttribute("src","../image/Food/1.jpg");
+        }
+    </script>
+    <img id="img1" src="../image/Food/1.jpg" width="300" onclick="clickmove()" onmouseover="overmouse()" onmouseleave="leavemouse()">
+    <hr>
+    <!--
+        3. img로 width=200 height=180으로 사진(아무거나) body에 넣은 후
+        이미지를 클릭하면 아래 div인 태그에 각종 정보(src, width, height)를
+        얻어서 출력하시오(getAttribute,innerHTML 사용)-->
+    <img id="third" src="../image/flower_ani/s3.JPG" width="200" height="180" onclick="c()">
+    <div id="thtest">테스트</div>
+    
+    <script>
+            var a=document.getElementById("third");
+            var b=document.getElementById("thtest");
+        function c(){
+            
+            var wid=a.getAttribute("width");
+            var hei=a.getAttribute("height");
+            var add=a.getAttribute("src");
+            b.innerHTML=wid+"<br>";
+            b.innerHTML+=hei+"<br>";
+            b.innerHTML+=add+" ";
+        }
+    </script>
+
+    
+    <hr>
+
+    <!--4. 버튼을 하나 만든 후 클릭하면 prompt창에 이름을 입력받아서 div태그 안에
+    "내 이름은 *** 입니다."라고 출력하시오 
+    (div에 class="bts"라고 준 후 css로 이쁘게 스타일 적용할 것)-->
+    <button class="btn btn-pink" id="btn1"type="button"onclick="ok()">이름 버튼</button>
+    <br>
+    <div id="id1"class="bts"></div>
+    <script>
+        function ok(){
+            var name=prompt("이름을 입력하세요");
+            var a=document.getElementById("id1")
+
+            if(name==null){
+                a.innerHTML="취소했군요"
+            }else{
+                a.innerHTML="제 이름은 "+name+"입니다.";
+            }
+        }   
+    </script>
+</body>
+</html>

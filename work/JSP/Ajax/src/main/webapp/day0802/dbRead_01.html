@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style>
+	div.box{
+		width: 40px;
+		height: 40px;
+		border: 1px solid gray;
+		border-radius: 100px;
+		box-shadow: 5px 5px 5px gray;
+	}
+</style>
+</head>
+<body>
+	<button type="button" id="btn1" class="btn btn-outline-info">xml읽기(myfood)</button>
+	<button type="button" id="btn2" class="btn btn-outline-info">json읽기()</button>
+	
+	<div id="show">출력하는곳</div>
+	
+	<script>
+		$("#btn1").click(function(){
+			
+			$("#result").empty();
+			
+			var s="";
+			$.ajax({
+				type:"get",
+				url:"foodtoxml.jsp",
+				dataType:"xml",
+				success:function(data){
+					$(data).find("myfood").each(function(i,ele){
+						
+					var e=$(ele)
+					
+					var image=e.find("foodphoto").text();
+					s+="<div>"
+						
+					s+="<img src='"+image+"' width='50px;'><br>";
+					
+					s+="num : "+e.attr("num")+"<br>";
+					s+="foodname : "+e.find("name").text()+"<br>";
+					s+="price : "+e.find("price").text()+"<br>";
+					s+="cnt : "+e.find("cnt").text()+"<br>";
+					s+="</div>"
+					})
+					
+					$("#show").html(s);
+				}
+			})
+			
+		})
+		
+		$("#btn2").click(function(){
+			
+			$("#result").empty
+			
+			$.ajax({
+				type:"get",
+				url:"shoptojson.jsp",
+				dataType:"json",
+				success:function(data){
+					
+					var s="<table class='table table-bordered' style='width:700px;'>";
+						s+="<tr>";
+						s+="<th>번호</th><th>상품명</th><th>색상</th><th>가격</th><th>이미지</th>"
+						s+="</tr>";
+						$.each(data,function(i,ele){
+							s+="<tr>";
+							s+="<td>"+ele.num+"</td>";
+							s+="<td>"+ele.sangpum+"</td>";
+							s+="<td>"+ele.color+"<br>"
+							+"<div class='box' style='background-color:"+ele.color+";'></div></td>";
+							s+="<td>"+ele.price+"</td>";
+							var img=ele.imgname;
+							s+="<td><img src='"+img+"' width='60px;'></td>";
+							s+="</tr>";
+						})
+						
+						s+="</table>";
+						$("#show").html(s);
+				}
+			})
+		})
+	</script>
+</body>
+</body>
+</html>

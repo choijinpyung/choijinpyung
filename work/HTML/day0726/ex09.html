@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        div.box{
+            border: 5px solid green;
+            margin-top: 20px;
+            width: 300px;
+            height: 140px;
+            padding: 20px;
+            font-family: VT323;
+            font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+    <h3>배열 반복시 사용하는 $.each</h3>
+    <script>
+        var data=["red","orange","blue","yellowgreen","pink"]
+
+        $.each(data,function(i,ele){ //i:인덱스  ele:엘리먼트(i에 해당하는 아이템 값)
+            var s="<h2 style='color:"+ele+"; width: 200px;'>"+ele+"</h2>";
+            document.write(s);
+        })
+    </script>
+
+    <div id="show"></div>
+
+    <script>
+        var info=[{name:"김영준",hp:"010-1111-2222",addr:"서울시"},
+        {name:"김선범",hp:"010-2443-2170",addr:"부천시"},
+        {name:"진현규",hp:"010-3333-4444",addr:"수원시"}];
+
+        var s="";
+
+        $.each(info,function(i,elt){
+
+            s+="<div class='box'>";
+            s+="이름 : "+elt.name+"<br>";
+            s+="핸드폰 : "+elt.hp+"<br>";
+            s+="주소 : "+elt.addr+"<br>";
+            s+="<div>";
+        })
+
+        $("#show").html(s);
+    </script>
+</body>
+</html>

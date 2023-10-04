@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>자바스크립트 배열 테스트</h3>
+
+    <script>
+        var food=["피자","치킨","쌀국수","봉된장"];
+        document.write("배열테스트<br>");
+
+        for(var i=0;i<food.length;i++)
+        {
+            // food[1]
+            document.write("food["+(i+1)+"]+: "+ food[i]+"<br>");
+        }
+    </script>
+
+    <h3>10개의 난수 출력</h3>
+
+    <script>
+    var rnd;
+
+    for(var i=1;i<=10;i++)
+    {
+        rnd=parseInt(Math.random()*10)+1;
+        //document.write('<h5>'+rnd+'</h5>'); //h2태그로 출력
+        //b태그로 2칸씩 떼어서 출력
+        document.write('<b>'+rnd+'</b>&nbsp;&nbsp;');
+    }
+    </script>
+
+    <h3>자바스크립트 배열선언</h3>
+
+    <script>
+        var arr=new Array();
+
+        arr[0]="텀블러";
+        arr[1]="커피잔";
+        arr[2]="커피머신";
+        arr[3]="컵받침";
+
+        for(var i=0;i<arr.length;i++)
+        {
+            document.write(arr[i]+"<br>");
+        }
+    </script>
+
+    <h3>배열선언_선언과 초기값 함께 지정</h3>
+
+    <script>    
+    var arr2=['red','green','orange','gray','magenta','blue']
+
+    for(var i=0;i<arr2.length;i++)
+    {
+        document.write("<b style='color: "+arr2[i]+"'>Hello</b><br>");
+    }
+    </script>
+
+    <h2>퀘스트</h2>
+
+    <script>
+    var arr3=['red','green','orange','gray','magenta','blue']
+
+    for(var i=0;i<arr3.length;i++)
+    {
+        document.write("<h1 style='color:"+arr2[i]+";''>"+arr2[i]+"</h2>");
+    }
+    </script>
+
+    <h3>자바스크립트 배열 특징</h3>
+    <script>
+        var flowers=new Array();
+        flowers.push("장미꽃"); //배열 마지막에 추가
+        flowers.push("해바라기");
+        flowers.push("프리지아");
+        flowers.push("백합");
+
+        //h1 태그로 배열 출력
+        for(var i=0;i<flowers.length;i++)
+        {
+        document.write("<h1>"+flowers[i]+"</h1>");
+        }
+
+        //제거
+        flowers.pop(); //마지막 배열 제거
+        flowers.pop();
+
+        flowers.shift(); //첫번째 배열 제거
+
+        console.log(flowers);
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        #result{
+            width: 400px;
+            height: 200px;
+            font-family: VT323;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        $(function(){
+            //현재 날짜 구해서 날짜 타입에 넣어주기
+            var date=new Date();
+
+            var y=date.getFullYear();
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+
+            var currday=y+"-"+m+"-"+d;
+
+            $("#thedate").val(currday);
+
+            //버튼이벤트
+            $("#btn1").click(function(){
+                
+                var s="";
+                var n="";
+                var b="";
+                var d="";
+                
+                //이름읽기
+                n="이름: "+$("#myname").val();+"<br>"
+                //생년월일
+                b="생년월일: "+$("#mybirth").val();+"<br>"
+                //운전면허 체크(운전면허 : 있음)
+                d="운전면허: "+($("#cblic").is(":checked")?"있음":"없음");
+                //신청일
+                s="신청일: "+$("#thedate").val();+"<br>"
+                
+                $("#result").html(n+"<br>"+d+"<br>"+s+"<br>"+b);+"<br>"
+            })  
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <legend style="color: green">폼태그연습</legend>
+        <table class="table table-bordered" style="width: 400px; border: solid 3px gray">
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" class="form-control" id="myname"
+                    style="width: 150px">
+                </td>
+            </tr>
+
+            <tr>
+                <th>운전면허</th>
+                <td>
+                    <label><input type="checkbox" id="cblic">운전면허</label>
+                </td>
+            </tr>
+
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <input type="date" id="mybirth">
+                </td>
+            </tr>
+
+            <tr>
+                <th>신청일</th>
+                <td>
+                    <input type="date" id="thedate">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="button" id="btn1" class="btn btn-outline-success">제이쿼리로 입력값 읽기</button>
+                </td>
+            </tr>
+        </table>
+        <div id="result"></div>
+    </form>
+</body>
+</html>

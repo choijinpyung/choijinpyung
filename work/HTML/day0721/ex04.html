@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sphoto{
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+            margin: 5px 5px;
+            size: 200px;
+        }
+
+        #photo_box{
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            width: 360px;
+            height: 535px;
+            border: 2px solid black;
+            padding: 10px 10px;
+        }
+
+        #main_photo{
+            position: absolute;
+            left: 800px;
+            top: 100px;
+            width: 400px;
+            height: 580px;  
+        }
+
+        #large_photo{
+            width: 360px;
+            height: 550px;
+            border: 5px inset orange;
+        }
+    </style>
+</head>
+<body>
+    <h2>문제 : 작은 이미지에 마우스를 올리면 큰 사진이 바뀌게 하는 이벤트 추가</h2>
+
+    <div id="photo_box">
+        <!-- 35개의 이미지-->
+        <script>
+        for(var i=1; i<=35; i++)
+        {
+            if(i==23) continue;
+            document.write("<img src=../image/쇼핑몰사진/"+i+".jpg class='sphoto'>");
+        }
+        </script>
+    </div>
+
+    <div id="main_photo">
+        <img id="large_photo" src="../image/div_img/beauty3.jpg">
+    </div>
+
+    <script>
+        //class배열얻기
+        //var sphoto=document.getElementsByClassName("sphoto"); 방법1
+        var sphoto=document.querySelectorAll(".sphoto");
+        //id얻기
+        //var lgphto=document.getElementById("large_photo"); //방법1
+        var lgphoto=document.querySelector("#large_photo"); //방법2
+        //반복문안에서..마우스이벤트를 배열갯수만큼
+        for(var i=0;i<sphoto.length;i++)
+        {
+            sphoto[i].onmouseover=function(){
+            //현재사진의 경로얻기
+            var selimg=this.getAttribute("src");    
+        
+        //얻은 경로 사진을 id가 large_photo인 이미지에서 적용
+        lgphoto.setAttribute("src",selimg);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #one{
+            margin-bottom: 30px;
+        }
+    </style>
+    
+    <script>
+        function photosmall(){
+
+            var p=document.getElementById("myimg");
+            var w=p.getAttribute("width");
+            console.log(typeof(w)); //string인데 - *는 숫자로 계산됨(+만 안됨)
+            w-=10;
+            p.setAttribute("width",w);
+        }
+
+        function photolarge(){
+
+            var p=document.getElementById("myimg");
+            var w=p.getAttribute("width");
+            w=parseInt(w);
+            console.log
+            w+=10;
+            p.setAttribute("width",w);
+        }
+    </script>
+</head>
+<body>
+    <div id="one">
+        <button type="button" onclick="photosmall()">점점작게</button>
+        <button type="button" onclick="photolarge()">점점크게</button>
+    </div>
+    <img src="../image/다운로드/3.png" width="200" id="myimg">
+</body>
+</html>

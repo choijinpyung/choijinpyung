@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            
+            //정적 클릭 이벤트
+            //$("#mylang").children().click(function(){
+            //    $(this).remove();
+            //})
+
+            //li를 이벤트로 추가
+            $("#mylang").append('<li>Jquery</li>');
+
+            //동적 클릭 이벤트
+            $(document).on("click","li",function(){
+                $(this).remove();
+            })
+        })
+    </script>
+</head>
+<body>
+    <ul id="mylang">
+        <li>Java</li>
+        <li>Oracle</li>
+        <li>Jsp</li>
+        <li>Mysql</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <script>
+
+        $(function(){
+        //h3아래 b태그 글자색 배경 변경
+        $("h3>b").css({
+            "color" : "skyblue",
+            "text-font" : "bold"
+        })
+        //h3아래 sapn도 글씨체나 글자색
+        $("h3>span").css({
+            "color" : "pink",
+            "text-font" : "bold"
+        })
+
+        //이벤트 : 음식명 누르면
+        //span에 있는 경로가 img에 음식명은 맨 아래 h3에 나오게 하세요
+        $("h3>b").click(function(){
+            var imgSrc=$(this).next().next().text();
+
+            $(".photo").attr("src",imgSrc).css("width","300px");
+
+            var text=$(this).text();
+            $("h3:last").html(text).css({
+                "color": "skyblue",
+                "text-font" : "bold"
+            })    
+        })
+    })
+    </script>
+</head>
+<body>
+    <h3>
+        <b>에그샌드위치</b>
+        <br>
+        <span>../image/food/1.jpg</span>
+    </h3>
+
+    <h3>
+        <b>숯불꼬치구이</b>
+        <br>
+        <span>../image/food/2.jpg</span>
+    </h3>
+
+    <h3>
+        <b>토마토에그인헬</b>
+        <br>
+        <span>../image/food/12.jpg</span>
+    </h3>
+
+    <hr>
+    <img src="" class="photo"><!--위의 span 태그있는 이미지 띄울것-->
+    <br>
+    <h3></h3> <!--요기에 b태그에 있는 음식명 출력-->
+</body>
+</html>

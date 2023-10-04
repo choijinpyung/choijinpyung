@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <title>Document</title>
+    <style>
+        #out{
+            position: absolute;
+            left: 10px;
+            top: 150px;
+            width: 500px;
+            height: 500px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        #imgresult{
+            width : 500px;
+            height : 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 버튼에 2개 하나는 food, 하나는 연예인이라 쓰고
+    css는 우리가 만든 buttonstyle에서 적용 
+
+    food버튼을 클릭하면 (onclick)
+    음식사진을 div에 출력하고 (div=out)
+    연예인을 클릭하면 (onclick)
+    연예인 한명을 출력한다. (div=out)
+    (단, 2번 모두 음식을 출력할까요? 라고 물어보고 예를 클릭시에만 이미지 출력한다)
+    -->
+    <script>
+        window.onload=function(){
+
+            //id로 객체값 읽어오기
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+            var imgresult=document.getElementById("imgresult");
+
+            //읽어온 객체에 이벤트 부여하기
+            btn1.onclick=function(){
+                //조건
+                if(confirm('모든 음식을 출력할까요?')){
+                    //속성값 변경
+                    imgresult.setAttribute("src", "../image/food/1.jpg");
+                } else{
+                    alert("취소합니다.");
+                }
+            }
+
+            btn2.onclick=function(){
+                //조건
+                if(confirm("모든 연예인을 출력할까요?")){
+                    //속성값 변경
+                    imgresult.setAttribute("src", "../image/연예인사진/1.jpg");
+                }else{
+                    alert("취소합니다.");
+                }
+            }
+        }
+    </script>
+
+    <h3>연예인 사진 출력하기</h3>
+    <hr>
+    <button type="button" id="btn1" class="btn btn-pink">Food</button>
+    <button type="button" id="btn2" class="btn btn-greenyellow">연예인</button>
+
+    <div id="out">
+        <img src="../image/flower_ani/f2.png" id="imgresult">
+    </div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style>
+	div.memo{
+		position: absolute;
+		border: 1px solid lightgray;
+		font-size: 1.4em;
+		font-family: VT323;
+	}
+	
+	div.button{
+		left: 60px;
+		top: 30px;
+		width: 400px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+	}
+	
+	div.addform{
+		left: 40px;
+		top: 150px;
+		width: 444px;
+		height: 395px;
+		padding: 20px 20px;
+		border: 0px;
+	}
+	
+	div.updateform{
+		left: 40px;
+		top: 150px;
+		width: 444px;
+		height: 395px;
+		padding: 20px 20px;
+		border: 0px;
+	}
+	
+	div.list{
+		left: 530px;
+		top: 5px;
+		width: 650px;
+		height: 950px;
+		padding: 20px 20px;
+		border: 2px solid gray;
+		border-radius: 30px;
+		background-image: url("../image/다운로드/h1.png");
+	}
+	
+	img.avata{
+		cursor: pointer;
+	}
+	
+	img.select{
+		border: 2px solid orange;
+	}
+	
+	span.writeday{
+		float: right;
+	}
+	
+	span.writer{font-weight: bold;}
+	
+	.mod{
+		margin-left: 100px;
+		color: blue;
+	}
+	
+	.del{
+		margin-left: 20px;
+		color: red;
+	}
+</style>
+<script>
+	$(function(){
+		//처음로딩시 목록 출력하기
+		list();
+		
+		$("div.addform").hide();
+		$("div.updateform").hide();
+		
+		//메모추가 버튼 누르면 addform 나타나기
+		$("#btnadd").click(function(){
+			
+			$("div.addform").slideToggle('slow');
+		})
+		
+		//아바타 2번 인덱스에 select 클래스 추가
+		$("img.avata").eq(2).addClass("select");
+		
+		//아바타 2번 인덱스에 src값을 얻어서 input 태그에 넣어주기
+		$("avata").val($("img.avata").eq(2).attr("src"));
+		
+		//아바타 선택하면 값 변경되기
+		$("img.avata").click(function(){
+			$(this).siblings().removeClass("select");
+			$(this).addClass("select");
+			$("#avata").val($(this).attr("src"));
+		})
+		
+		//수정폼의 아바타 선택하면 값 변경되기
+		$("img.uavata").click(function(){
+			$(this).siblings().removeClass("select");
+			$(this).addClass("select");
+			$("#uavata").val($(this).attr("src"));
+		})
+		
+		//저장(insert)..추가 성공시 list 호출
+		$("td.dbsave").click(function(){
+			var data=$("#addfrm").serialize();
+			//alert(data);
+			
+			$.ajax({
+				type:"post",
+				dataType:"html",
+				url:"memoinsert.jsp",
+				data:data,
+				success:function(res){
+					//추가 성공시 다시 목록 출력
+					list();arguments
+					//입력값 지우기 초기화
+					$("#writer").val(" ");
+					$("#stroy").val("");
+					
+					//선택된 아바타 클래스 제거
+					$("img.avata").removeClass("select");
+					//아바타 2번 인덱스에 select 클래스 추가
+					$("img.avata").eq(2).addClass("select");
+					//아바타 2번 인덱스에 src값을 얻어서 input 태그에 넣어주기
+					$("avata").val($("img.avata").eq(2).attr("src"));
+				}
+			})
+		})
+		
+		//삭제이벤트
+		$(document).on("click","span.del",function(){
+			
+			var num=$(this).attr("num");
+			//alert(num);
+			
+			$.ajax({
+				type:"get",
+				dataType:"html",
+				url:"memodelete.jsp",
+				data:{"num":num},
+				success:function(){
+					list();
+				}
+			})
+		})
+		
+		//리스트의 수정버튼
+		$(document).on("click","span.mod",function(){
+			var num=$(this).attr("num");
+			//alert(num)
+			
+			//수정폼의 unum에 num넣기
+			$("#unum").val(num);
+			
+			$.ajax({
+				
+				type:"get",
+				url:"memogetdata.jsp",
+				dataType:"json",
+				data:{"num":num},
+				success:function(res){
+					
+					//수정폼 태그안에 넣어주기
+					$("#unum").val(res.num);
+					$("#uwriter").val(res.writer);
+					$("#ustory").val(res.story);
+					$("#uavata").val(res.avata);
+					
+					//해당이미지에 select 클래스 추가
+					$("img.uavata").each(function(i,ele){
+						if($(this).attr("src")==res.avata)
+						   $(this).addClass("select");
+						else
+						   $(this).removeClass("select");
+					})
+					
+					//추가폼이 있다면 숨기고 수정폼을 나타낸다
+					$("div.addform").hide();
+					$("div.updateform").show();
+					
+					//아바타 선택하면 값 변경되기
+					$("img.uavata").click(function(){
+					$(this).siblings().removeClass("select");
+					$(this).addClass("select");
+					$("#uavata").val($(this).attr("src"));
+					})
+				}
+			})
+		})
+		
+		//업데이트(update)..
+		$("td.dbupdate").click(function(){
+			var data=$("#updatefrm").serialize();
+			//alert(data);
+			
+			$.ajax({
+				type:"get",
+				dataType:"html",
+				url:"memoupdate.jsp",
+				data:data,
+				success:function(res){
+					//업데이트 성공시 다시 목록 출력
+					list();
+				}
+			})
+		})
+		
+	})
+	
+	//사용자함수...list
+	function list(){
+		
+		$.ajax({
+			
+			type:"get",
+			dataType:"json",
+			url:"memolist.jsp",
+			success:function(data){
+				
+				//alert(data.length);
+				var s="";
+				if(data.length==0)
+				{
+					s+="<h3 class='alert alert-info'>저장된 메모 없음</h3>";
+				}
+				else
+				{
+					$.each(data,function(i,ele){
+						
+						s+="<table class='table'>";
+						s+="<tr><td>";
+						s+="<span class='writer'>작성자 : "+ele.writer+"</span>";
+						s+="<span class='writeday'>"+ele.writeday+"</span>";
+						s+="<span class='mod' num="+ele.num+">수정</span>"
+						s+="<span class='del' num="+ele.num+">삭제</span>"
+						s+="<br>";
+						s+="<pre>"+ele.story;
+						s+="<img src='"+ele.avata+"' align='right' width='80'>";
+						s+="</pre>";
+						s+="</td></tr>";
+						s+="</table><br>";
+					})
+				}
+				
+				$("div.list").html(s);
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div class="memo button">
+		<button type="button" class="btn btn-info"
+		id="btnadd">메모추가</button>
+	</div>
+	
+	<div class="memo addform">
+		<form id="addfrm">
+			<table class="table table-bordered" style="width: 400px;">
+				
+				<tr>
+					<th style="background-color: deeppink; width: 300px;">작성자</th>
+					<td>
+						<input type="text" class="form-control"
+						name="writer" id="writer" style="width: 300px;">
+					</td>
+				</tr>
+				
+				<tr>
+					<th style="background-color: deepskyblue; width: 300px;">메모</th>
+					<td>
+						<textarea class="form-control"
+						name="story" id="story" style="width: 300px; height: 150px;">
+						</textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<th style="background-color: deeppink; width: 300px;">아바타</th>
+					<td>
+						<input type="hidden" name="avata" id="avata">
+						<script>
+							<!--아바타 5개-->
+							
+							var s="";
+							
+							for(var i=1; i<=5; i++)
+							{
+								s+="<img src='../image/다운로드/h"+i+".png' width='60' height='60' class='avata'>";
+								//if(i==5)
+								//s+="<br>";
+							}
+							
+							document.write(s);
+						</script>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center" style="cursor: pointer; background-color: deepskyblue;"
+					class="dbsave">
+						DB에 저장하기
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+		
+	
+	<div class="memo updateform">
+		
+		<form id="updatefrm">
+		
+			<!--hidden-->
+			<input type="hidden" name="unum" id="unum">
+			<table class="table table-bordered" style="width: 400px;">
+				
+				<tr>
+					<th style="background-color: deeppink; width: 300px;">작성자</th>
+					<td>
+						<input type="text" class="form-control"
+						name="uwriter" id="uwriter" style="width: 300px;">
+					</td>
+				</tr>
+				
+				<tr>
+					<th style="background-color: deepskyblue; width: 300px;">메모</th>
+					<td>
+						<textarea class="form-control"
+						name="ustory" id="ustory" style="width: 300px; height: 150px;">
+						</textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<th style="background-color: deeppink; width: 300px;">아바타</th>
+					<td>
+						<input type="hidden" name="uavata" id="uavata">
+						<script>
+							<!--아바타 5개-->
+							
+							var s="";
+							
+							for(var i=1; i<=5; i++)
+							{
+								s+="<img src='../image/다운로드/h"+i+".png' width='60' height='60' class='uavata'>";
+								//if(i==5)
+								//s+="<br>";
+							}
+							
+							document.write(s);
+						</script>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center" style="cursor: pointer; background-color: deepskyblue;"
+					class="dbupdate">
+						DB에 수정하기
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+		
+	</div>
+		
+	<div class="memo list">list</div>
+</body>
+</html>

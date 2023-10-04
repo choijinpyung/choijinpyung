@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hello(){
+            alert("두번째 버튼 클릭");
+        }
+
+        //btn1에 이벤트 추가
+        window.onload=function(){
+        var b=document.getElementById('btn1');
+        b.onclick=function(){
+        alert("3번째 버튼 클릭");
+        }
+    }    
+    </script>
+</head>
+<body>
+    <button type="button" onclick="alert('안녕하세요')">함수호출_직접이벤트 호출</button>
+    <br><br>
+    <button type="button"
+    onclick="hello()">자바스크립트 사용자 함수 호출</button>
+    <br><br>
+    <button type="button" id="btn1">이벤트를 자바스크립트로</button>
+</body>
+</html>

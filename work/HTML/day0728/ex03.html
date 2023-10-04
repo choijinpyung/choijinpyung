@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        /* gun 사이즈는 300x500 */
+        #gun{
+            width: 300px;
+            height: 250px;
+            background-image: url(../image/jquery_img/gun.png);
+        }
+
+        #gun:active{
+            background-position: right bottom;
+        }
+
+        div.cover{
+            position: absolute;
+            left: 100px;
+            top: 400px;
+            background-image: url('../image/jquery_img/cover.png');
+            width: 350px;
+            height: 300px;
+            background-size: 350px 300px;
+            z-index: 2;
+        }
+
+        div.cd1{
+            position: absolute;
+            left: 250px;
+            top: 414px;
+            background-image: url('../image/jquery_img/cd-sprite.png');
+            width: 350px;
+            height: 280px;
+            background-size: 350px 870px;
+            z-index: 1;
+        }
+
+        div.button button{
+            position: absolute;
+            left: 200px;
+            top: 750px;
+        }
+
+        div.buttons button{
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            margin-right: 20px;
+            background-color: skyblue;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        div.button button.hover{
+            box-shadow: 5px 5px 5px gray;
+        }
+    </style>
+    
+    <script>
+        $(function(){
+            $("#btn1").click(function(){
+                var pos=$("div.cd1").css("background-position");
+                console.log(pos);
+                if(pos=='0% 0%')
+                {   // '0% 0%' = left top
+                    alert("현재 1번 CD 입니다.")
+                }
+                
+                else
+                {   // 애니메이션으로 적용
+                    $("div.cd1").animate({left:'120px'},500,function(){
+                        $(this).css("background-position","left top");
+                        $(this).animate({left:'280px'},500)
+                    })
+                }
+            })
+
+            $("#btn2").click(function(){
+                var pos=$("div.cd1").css("background-position");
+                console.log(pos);
+                if(pos=='0% 50%')
+                { 
+                    alert("현재 2번 CD 입니다.")
+                }
+
+                else
+                {
+                    // 애니메이션으로 적용
+                    $("div.cd1").animate({left:'120px'},500,function(){
+                        $(this).css("background-position","left center");
+                        $(this).animate({left:'280px'},500)
+                    })
+                }
+            })
+
+            $("#btn3").click(function(){
+                var pos=$("div.cd1").css("background-position");
+                console.log(pos);
+                if(pos=='0% 100%')
+                { 
+                    alert("현재 3번 CD 입니다.")    
+                }
+
+                else
+                {
+                    // 애니메이션으로 적용
+                    $("div.cd1").animate({left:'120px'},500,function(){
+                        $(this).css("background-position","left bottom");
+                        $(this).animate({left:'280px'},500)
+                    })
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>전체이미지중에서 일부</h2>
+    <div id="gun"></div>
+    <!--
+        요구사항
+        1. 버튼 클릭시 해당 시디로 교체
+        2. 지금 1번을 클릭하면 "현재시디입니다" 경고
+        3. 교체시 animate(자연스럽게 주기 위함)
+    -->
+    <hr>
+    <div class="cover"></div>
+    <div class="cd1"></div>
+    <div class="buttons">
+    <button type="button" id="btn1">CD1</button>
+    <button type="button" id="btn2">CD2</button>
+    <button type="button" id="btn3">CD3</button>
+    </div>
+</body>
+</html>

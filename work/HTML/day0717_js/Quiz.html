@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <!--
+         당신의 키는?
+         180
+         표준 몸무게: (키-100)*0.9
+         당신의 표준 몸무게는 72kg 입니다
+      -->
+         <script>
+         var height=window.prompt("당신의 키는?");
+         document.write("당신의 키는?<br>"+height+"<br>");
+         document.write("당신의 표준 몸무게는 "+Number((height-100)*0.9)+"kg입니다<br>");
+
+         //confirm
+         var ans=confirm("정말 삭제할까요?");
+
+         if(ans==1)
+            document.write("삭제 되었습니다<br>"); //true1
+         else
+            document.write("삭제가 취소 되었습니다<br>");
+
+         //eval() : 문자열내에서 연산가능
+         var a=eval("10.5+10");
+         document.write(a+"<br>"); //20.5
+         document.write(parseFloat(a)+parseInt(a)+"<br>"); //40.5
+
+         //prompt창에 구구단 (원하는단) 입력해서 출력해보자
+
+         var dan=prompt("원하는 구구단의 번호를 입력해주세요");
+
+         for(var i=1;i<=9;i++)
+         {
+            document.write(dan+"X"+i+"="+(dan*i)+"<br>");
+         }
+        </script>
+</body>
+</html>

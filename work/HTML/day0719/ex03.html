@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/buttonStyle.css">
+    <style>
+        img{
+            width: 182px;
+            border: 1px solid gray;
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+            //id로 해당 요소 값 읽기
+            var myimg1=document.getElementById("myimg1");
+            var myimg2=document.getElementById("myimg2");
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+            var btninit=document.getElementById("btninit");
+
+            //읽어온 객체에 이벤트 부여하기
+            btn1.onclick=function(){
+
+                //alert("이벤트시작!!");
+
+                //속성값 읽어오기
+                //myimg1.getAttribute("src");
+
+                //속성값 변경
+                myimg1.setAttribute("src","../image/Food/2.jpg");
+                myimg2.setAttribute("src","../image/Food/3.jpg");
+
+                //스타일시트로 너비주면 변경도 스타일시트로
+                //myimg1.style.width="300px";
+            }
+
+            btn2.onclick=function(){
+                myimg1.setAttribute("src","../image/Food/4.jpg");
+                myimg2.setAttribute("src","../image/Food/5.jpg");
+            }
+
+            btninit.onclick=function(){
+                myimg1.setAttribute("src","../image/flower_ani/f2.png");
+                myimg2.setAttribute("src","../image/flower_ani/f20.png");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h4>이미지 2개</h4>
+    <img src="../image/flower_ani/f2.png" id="myimg1">
+    <img src="../image/flower_ani/f20.png" id="myimg2">
+
+    <hr>
+    <button type="button" id="btn1" class="btn btn-pink">이미지변경1</button>
+    <button type="button" id="btn2" class="btn btn-blue">이미지변경2</button>
+    <button type="button" id="btninit" class="btn btn-black">원래대로변경</button>
+</body>
+</html>

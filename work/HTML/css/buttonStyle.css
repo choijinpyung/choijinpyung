@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+body{
+    font-family: VT323;
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.btn-greenyellow{
+    background-color: greenyellow;
+    color: black;
+}
+
+.btn-pink{
+    background-color: pink;
+    color: black;
+}
+
+.btn-blue{
+    background-color: blue;
+    color: white
+}
+
+.btn-red{
+    background-color: red;
+    color: white
+}

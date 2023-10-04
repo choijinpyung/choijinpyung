@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h3>Q.세개의 이미지에 마우스를 올리면 f20으로 바뀌며<br>
+    마우스가 벗어나면 원래 이미지로 돌아가게 하세요</h3>
+    <img src="../image/flower_ani/f17.png" width="150">
+    <img src="../image/flower_ani/f18.png" width="150">
+    <img src="../image/flower_ani/f19.png" width="150">
+    
+    <script>
+        $("img").mouseover(function(){
+            imgsrc=$(this).attr("src");
+            $(this).attr("src","../image/flower_ani/f16.png")
+        })
+
+        $("img").mouseout(function(){
+            $(this).attr("src",imgsrc)
+        })
+    </script>
+</body>
+</html>

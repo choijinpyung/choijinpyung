@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div style="margin-left: 200px;">
+
+		<form action="oneAction.jsp" method="post">
+
+			<table class="table table-bordered" style="width: 400px;">
+
+				<tr>
+					<th class="table-warning">이름</th>
+					<td>
+						<input type="text" class="form-control" name="irum" style="width: 150px;">
+					</td>
+				</tr>
+
+				<tr>
+					<th class="table-warning">생년월일</th>
+					<td>
+						<input type="date" class="form-control" name="birth" style="width: 250px;">
+					</td>
+				</tr>
+
+				<tr>
+					<th class="table-warning">취미</th>
+					<td>
+						<label><input type="checkbox" name="hobby" value="게임">&nbsp;게임</label>
+						<label><input type="checkbox" name="hobby" value="공부">&nbsp;공부</label>
+						<label><input type="checkbox" name="hobby" value="댄스">&nbsp;댄스</label>
+						<label><input type="checkbox" name="hobby" value="운동">&nbsp;운동</label>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="btn btn-danger">서버전송</button>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>

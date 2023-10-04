@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h3 class="a"></h3>
+    <hr>
+    <h3 class="b">h3 내용을 이곳에 복사하세요</h3>
+
+    <script>
+        $("h3.a").html("짱구 이미지 입니다").append("<img src='../image/다운로드/짱구.png'>")
+        $("h3.a img").css({
+            "width" : "150px",
+            "height" : "150px",
+            "margin-left" : "20px",
+            "border-radius" : "25px",
+            "border" : "solid 5px green"
+        })
+
+        //h3.a를 클릭시 "안에 코드 복사함"
+        $("h3.a").click(function(){
+
+            tag=$(this).html();
+            alert("안에 코드 복사함");
+        })
+
+        //h3.b를 클릭시 위의 내용이 그대로 복사되도록
+        $("h3.b").click(function(){
+            $(this).html(tag);
+        })
+    </script>
+</body>
+</html>

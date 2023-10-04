@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="a">
+        <div>Happy</div>
+        <div>Friday</div>
+    </div>
+    <div class="b">
+        <div>Java</div>
+        <div>Oracle</div>
+        <h3>b클래스 아래의 h3태그입니다</h3>
+        <img src="">
+    </div>
+    <div class="c">
+        <b>오늘은 즐거운 금요일</b>
+        <div>오늘은 제이쿼리 공부하는날</div>
+        <h3>c클래스 아래의 h3태그입니다</h3>
+        <div><img src=""></div>
+    </div>
+
+    <script>
+        //eq(0): 0번 인덱스, 즉 첫번째
+
+        //1.div의 클래스명이 a인 태그 아래 모든 div안에 있는 글자색 바꾸기
+        $("div.a div").css("color","red")
+                      .css("font-size","25px")
+                      .css("font-family","impact")
+
+        //2.b클래스에 바로 아래 div의 width를 300px,border도 변경
+        $("div.b>div").css("width","100px")
+                      .css("border","2px solid green")
+
+        //3.b클래스아래의 img태그의 src변경하고 width-200px로 변경
+        $("div.b img").attr("src","../image/다운로드/맹구.png").css("width","200px")
+
+        //4.c클래스인 div 아래의 b태그의 글자색,배경색,글자크기를 변경하시오
+        $("div.c>b").css("color","blue")
+                    .css("backgroundColor","green")
+                    .css("font-size","20px")
+        
+        //5.c클래스인 div 아래의 img태그에 신민아 사진을 넣은 후 동그랗게 나오게 열어서 css
+        $("div.c>div>img").attr("src","../image/연예인사진/17.jpg")
+                          .css("width","200px")
+                          .css("padding","20px")
+                          
+        //6.모든 h3 태그의 배경색을 회색,글자색을 그린색,너비를 300px,보더를 굵게 지정해주세요
+        $("h3").css({
+            "backgroundColor" : "gray",
+            "color" : "green",
+            "width" : "300px",
+            "border" : "20px"
+        })
+    </script>
+</body>
+</html>

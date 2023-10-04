@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <style>
+        button{
+            width: 120px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: '1.3em';
+            font-family: 'Orbit';
+            cursor: pointer;
+        }
+
+        button.a{
+            background-color: blueviolet;
+            color: white;
+        }
+
+        button.b{
+            background-color: green;
+            color: lightgray;
+        }
+
+        button.c{
+            background-color: blanchedalmond;
+            color: black
+        }
+
+        div{
+            position: absolute;
+            width: 300px;
+            height: 150px;
+            font-size: 20pt;
+            font-family: "Orbit";
+        }
+
+        #one{
+            left: 100px;
+            top: 100px;
+        }
+
+        #two{
+            left: 300px;
+            top: 100px;
+        }
+
+        #three{
+            left: 700px;
+            top: 100px;
+        }
+
+        #four{
+            left: 1100px;
+            top: 100px;
+        }
+
+        #result{
+            left: 150px;
+            font-size: 2em;
+            text-align: center;
+            height: 250px;
+            width: 800px;
+            top: 500px;
+            border: 3px solid green;
+            border-radius: 30px;
+            padding-top: 20px;
+        }
+
+        #three h3:hover{
+            cursor: pointer;
+            background-color: gray;
+        }
+
+        #inwon{
+            margin-left: 10px;
+            margin-top: 10px;
+            font-family: 'Orbit';
+        }
+    </style>
+    <script>
+        $(function(){
+
+            var theater="", movie="", inwon="", hour="";
+
+            //#one버튼추가
+            var b="<button type='button' id='btn1' class='a'>영화예매</button>"
+            $("#one").append(b);
+
+            //버튼1이벤트
+            $("#btn1").click(function(){
+                var b2 = "<button type='button' id='btn2' class='b'>극장선택</button>";
+                b2 += "&nbsp;<button type='button' id='btn3' class='c'>영화선택</button>";
+                $("#two").html(b2);
+            })
+
+            //버튼2는 나중에 동적생성
+            $(document).on('click', '#btn2',function(){
+                var s = "<h3 class='theater'>CGV 강남</h3>";
+                s += "<h3 class='theater'>MEGABOX 청담</h3>";
+                s += "<h3 class='theater'>MEGABOX 코엑스</h3>";
+                s += "<h3 class='theater'>CGV 왕십리</h3>";
+
+                $("#three").html(s);
+            })
+
+            $(document).on('click','#btn3',function(){
+                var s = "<h3 class='movie'>명탐정코난 흑철의 어영</h3>";
+                s += "<h3 class='movie'>바비</h3>";
+                s += "<h3 class='movie'>밀수</h3>";
+                s += "<h3 class='movie'>엘리멘탈</h3>";
+
+                $("#three").html(s);
+            })
+
+            //영화관, 영화제목 클릭시 이벤트
+            $(document).on('click','#three h3',function(){
+
+                //클릭한 h3태그에서 class를 얻는다
+                var select=$(this).attr("class");
+
+                if (select=="theater") {
+                    theater="극장명: "+$(this).text();
+                }
+
+                else if (select=="movie"){
+                    movie="영화명: " +$(this).text();
+                }    
+
+                //인원수
+                var tag="";
+
+                tag+="<input type='number' min='1' max='5' value='0' id='inwon'><br>";
+
+                //시간배열_라디오버튼
+                var times=["09:00","13:30","15:20","18:50","20:30"];
+
+                $.each(times,function(i,elt){
+                    tag+="<input type='radio' name='time' value='"+times[i]+"'>"+times[i]+"<br>";
+                });
+
+                $("#four").html(tag);
+
+                //$("#result").html(theater+"<br>"+movie);
+                $("#result").html(theater+"<br>"+movie+"<br>"+inwon+"<br>"+hour); 
+
+            })
+
+            //인원변경시 이벤트
+            $(document).on('change','#inwon',function(){
+                inwon="인원 수: "+$(this).val();
+                //$("#result").html(theater+"<br>"+movie+"<br>"+inwon);
+                $("#result").html(theater+"<br>"+movie+"<br>"+inwon+"<br>"+hour);
+            })
+
+            //시간이벤트
+            $(document).on('click','input[name="time"]',function(){
+                 hour="상영시간: "+$(this).val();
+                $("#result").html(theater +"<br>"+movie+"<br>"+inwon+"<br>"+hour);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="result"></div>
+</body>
+</html>
